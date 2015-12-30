@@ -47,12 +47,20 @@
 		]
 
 		// $scope.adicionaContato = function(nome, telefone)
-		$scope.adicionaContato = function(contato)
+		$scope.adicionarContato = function(contato)
 		{
 			// $scope.contatos.push({nome: $scope.nome, telefone: $scope.telefone})
 			// $scope.contatos.push({nome: nome, telefone: telefone})
 			$scope.contatos.push(angular.copy(contato));
 			delete $scope.contato;
+		}
+		$scope.apagarContatos = function(contatos)
+		{
+			$scope.contatos = contatos.filter(function(contato)
+			{
+				if ( !contato.selecionado )
+					return contato;
+			});
 		}
 	});
 	</script>
@@ -81,7 +89,8 @@
 	<select class="form-control" ng-model="contato.operadora" ng-options="operadora.nome group by operadora.categoria for operadora in operadoras">
 		<option value="">Selecione uma operadora</option>
 	</select>
-	<button class="btn btn-primary btn-block" ng-disabled="!contato.nome || !contato.telefone" ng-click="adicionaContato(contato)">Salvar</button>
+	<button class="btn btn-primary btn-block" ng-disabled="!contato.nome || !contato.telefone" ng-click="adicionarContato(contato)">Salvar</button>
+	<button class="btn btn-danger btn-block" ng-disabled="" ng-click="apagarContatos(contatos)">Apagar</button>
 
 	
 </div>
