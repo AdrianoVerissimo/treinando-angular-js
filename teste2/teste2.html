@@ -18,6 +18,10 @@
 	{
 		margin-bottom: 5px;
 	}
+	.selecionado
+	{
+		background-color: yellow !important;
+	}
 	</style>
 
 	<script>
@@ -58,11 +62,13 @@
 	<h4>{{app}}</h4>
 	<table class="table table-striped">
 		<tr>
+			<td></td>
 			<td>Nome</td>
 			<td>Telefone</td>
 			<td>Operadora</td>
 		</tr>
-		<tr ng-repeat="contato in contatos">
+		<tr ng-repeat="contato in contatos" ng-class="{'selecionado': contato.selecionado}">
+			<td><input type="checkbox" ng-model="contato.selecionado" /></td>
 			<td>{{contato.nome}}</td>
 			<td>{{contato.telefone}}</td>
 			<td>{{contato.operadora.nome}}</td>
