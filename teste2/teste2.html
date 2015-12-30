@@ -62,6 +62,19 @@
 					return contato;
 			});
 		}
+		$scope.isContatoSelecionado = function(contatos)
+		{
+			//verifica se algum contato foi selecionado
+			var contatoSelecionado = contatos.some(function(contato)
+			{
+				if ( contato.selecionado )
+					return true;
+			});
+			if ( contatoSelecionado )
+				return false;
+			else
+				return true;
+		}
 	});
 	</script>
 </head>
@@ -90,7 +103,7 @@
 		<option value="">Selecione uma operadora</option>
 	</select>
 	<button class="btn btn-primary btn-block" ng-disabled="!contato.nome || !contato.telefone" ng-click="adicionarContato(contato)">Salvar</button>
-	<button class="btn btn-danger btn-block" ng-disabled="" ng-click="apagarContatos(contatos)">Apagar</button>
+	<button class="btn btn-danger btn-block" ng-disabled="isContatoSelecionado(contatos)" ng-click="apagarContatos(contatos)">Apagar</button>
 
 	
 </div>
