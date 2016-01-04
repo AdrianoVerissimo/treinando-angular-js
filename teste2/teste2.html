@@ -32,9 +32,9 @@
 
 		$scope.contatos =
 		[
-			{ nome: "Pedro", telefone: "99887766" },
-			{ nome: "Ana", telefone: "55443322" },
-			{ nome: "Maria", telefone: "11223344" }
+			{ nome: "Pedro", telefone: "99887766", cor: "blue" },
+			{ nome: "Ana", telefone: "55443322", cor: "yellow" },
+			{ nome: "Maria", telefone: "11223344", cor: "red" }
 		]
 		$scope.operadoras =
 		[
@@ -87,12 +87,14 @@
 			<td>Nome</td>
 			<td>Telefone</td>
 			<td>Operadora</td>
+			<td>Cor</td>
 		</tr>
 		<tr ng-repeat="contato in contatos" ng-class="{'selecionado': contato.selecionado}">
 			<td><input type="checkbox" ng-model="contato.selecionado" /></td>
 			<td>{{contato.nome}}</td>
 			<td>{{contato.telefone}}</td>
 			<td>{{contato.operadora.nome}}</td>
+			<td><div style="width: 20px; height: 20px;" ng-style="{'background-color': contato.cor}"></div></td>
 		</tr>
 	</table>
 	<input type="text" class="form-control" ng-model="contato.nome" placeholder="Nome" />
