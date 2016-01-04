@@ -94,16 +94,24 @@
 			<td><div style="width: 20px; height: 20px;" ng-style="{'background-color': contato.cor}"></div></td>
 		</tr>
 	</table>
-	<input type="text" class="form-control" ng-model="contato.nome" placeholder="Nome" />
-	<input type="text" class="form-control" ng-model="contato.telefone" placeholder="Telefone" />
+	<form name="contatoForm">
+		<input type="text" name="nome" class="form-control" ng-model="contato.nome" placeholder="Nome" ng-required="true" />
+		<input type="text" name="telefone" class="form-control" ng-model="contato.telefone" placeholder="Telefone" ng-required="true" />
 
-	<!-- <select class="form-control" ng-model="contato.operadora" ng-options="operadora.codigo as operadora.nome for operadora in operadoras"> -->
-	<select class="form-control" ng-model="contato.operadora" ng-options="operadora.nome group by operadora.categoria for operadora in operadoras">
-		<option value="">Selecione uma operadora</option>
-	</select>
-	<button class="btn btn-primary btn-block" ng-disabled="!contato.nome || !contato.telefone" ng-click="adicionarContato(contato)">Salvar</button>
-	<button class="btn btn-danger btn-block" ng-if="isContatoSelecionado(contatos)" ng-click="apagarContatos(contatos)">Apagar</button>
-	<!-- <button class="btn btn-danger btn-block" ng-hide="!isContatoSelecionado(contatos)" ng-click="apagarContatos(contatos)">Apagar</button> -->
+		<!-- <select class="form-control" ng-model="contato.operadora" ng-options="operadora.codigo as operadora.nome for operadora in operadoras"> -->
+		<select class="form-control" ng-model="contato.operadora" ng-options="operadora.nome group by operadora.categoria for operadora in operadoras">
+			<option value="">Selecione uma operadora</option>
+		</select>
+		<button class="btn btn-primary btn-block" ng-disabled="contatoForm.$invalid" ng-click="adicionarContato(contato)">Salvar</button>
+		<button class="btn btn-danger btn-block" ng-if="isContatoSelecionado(contatos)" ng-click="apagarContatos(contatos)">Apagar</button>
+		<!-- <button class="btn btn-danger btn-block" ng-hide="!isContatoSelecionado(contatos)" ng-click="apagarContatos(contatos)">Apagar</button> -->
+	</form>
+	<div class="alert alert-danger" ng-show="contatoForm.nome.$invalid">
+		Por favor, preenche o campo nome!
+	</div>
+	<div class="alert alert-danger" ng-show="contatoForm.telefone.$invalid">
+		Por favor, preenche o campo telefone!
+	</div>
 </div>
 <div ng-include="'rodape.html'"></div>
 </body>
