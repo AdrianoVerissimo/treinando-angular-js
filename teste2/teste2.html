@@ -104,8 +104,7 @@
 	<button class="btn btn-primary btn-block" ng-disabled="!contato.nome || !contato.telefone" ng-click="adicionarContato(contato)">Salvar</button>
 	<button class="btn btn-danger btn-block" ng-if="isContatoSelecionado(contatos)" ng-click="apagarContatos(contatos)">Apagar</button>
 	<!-- <button class="btn btn-danger btn-block" ng-hide="!isContatoSelecionado(contatos)" ng-click="apagarContatos(contatos)">Apagar</button> -->
-
-	
 </div>
+<div ng-include="'rodape.html'"></div>
 </body>
 </html>
