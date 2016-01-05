@@ -96,7 +96,7 @@
 		</tr>
 	</table>
 	<form name="contatoForm">
-		<input type="text" name="nome" class="form-control" ng-model="contato.nome" placeholder="Nome" ng-required="true" />
+		<input type="text" name="nome" class="form-control" ng-model="contato.nome" placeholder="Nome" ng-required="true" ng-minlength="10" />
 		<input type="text" name="telefone" class="form-control" ng-model="contato.telefone" placeholder="Telefone" ng-required="true" />
 
 		<!-- <select class="form-control" ng-model="contato.operadora" ng-options="operadora.codigo as operadora.nome for operadora in operadoras"> -->
@@ -107,11 +107,14 @@
 		<button class="btn btn-danger btn-block" ng-if="isContatoSelecionado(contatos)" ng-click="apagarContatos(contatos)">Apagar</button>
 		<!-- <button class="btn btn-danger btn-block" ng-hide="!isContatoSelecionado(contatos)" ng-click="apagarContatos(contatos)">Apagar</button> -->
 	</form>
-	<div class="alert alert-danger" ng-show="contatoForm.nome.$invalid && contatoForm.nome.$dirty">
+	<div class="alert alert-danger" ng-show="contatoForm.nome.$error.required && contatoForm.nome.$dirty">
 		Por favor, preencha o campo nome!
 	</div>
-	<div class="alert alert-danger" ng-show="contatoForm.telefone.$invalid && !contatoForm.telefone.$pristine">
-		Por favor, preencha o ampo telefone!
+	<div class="alert alert-danger" ng-show="contatoForm.nome.$error.minlength">
+		O campo nome deve ter no mínimo 10 caracteres.
+	</div>
+	<div class="alert alert-danger" ng-show="contatoForm.$error.required && !contatoForm.telefone.$pristine">
+		Por favor, preencha o campo telefone!
 	</div>
 </div>
 <div ng-include="'rodape.html'"></div>
