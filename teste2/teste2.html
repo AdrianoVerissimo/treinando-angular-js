@@ -53,6 +53,7 @@
 			// $scope.contatos.push({nome: nome, telefone: telefone})
 			$scope.contatos.push(angular.copy(contato));
 			delete $scope.contato;
+			$scope.contatoForm.$setPristine(); //reseta as mensagens de validação para que não apareçam após salvar e resetar formulário
 		}
 		$scope.apagarContatos = function(contatos)
 		{
@@ -106,11 +107,11 @@
 		<button class="btn btn-danger btn-block" ng-if="isContatoSelecionado(contatos)" ng-click="apagarContatos(contatos)">Apagar</button>
 		<!-- <button class="btn btn-danger btn-block" ng-hide="!isContatoSelecionado(contatos)" ng-click="apagarContatos(contatos)">Apagar</button> -->
 	</form>
-	<div class="alert alert-danger" ng-show="contatoForm.nome.$invalid">
-		Por favor, preenche o campo nome!
+	<div class="alert alert-danger" ng-show="contatoForm.nome.$invalid && contatoForm.nome.$dirty">
+		Por favor, preencha o campo nome!
 	</div>
-	<div class="alert alert-danger" ng-show="contatoForm.telefone.$invalid">
-		Por favor, preenche o campo telefone!
+	<div class="alert alert-danger" ng-show="contatoForm.telefone.$invalid && !contatoForm.telefone.$pristine">
+		Por favor, preencha o ampo telefone!
 	</div>
 </div>
 <div ng-include="'rodape.html'"></div>
