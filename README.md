@@ -1,1 +1,1 @@
-treinango-angular-js
+Este repositório foi criado com o intuito de armazenar vários treinamentos praticados por mim de AngularJS.
