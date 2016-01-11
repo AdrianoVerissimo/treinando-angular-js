@@ -47,6 +47,7 @@
 			{ nome: "Embratel", codigo: 6, categoria: "Fixo" }
 		]
 
+
 		// $scope.adicionaContato = function(nome, telefone)
 		$scope.adicionarContato = function(contato)
 		{
@@ -74,6 +75,11 @@
 			});
 			return contatoSelecionado;
 		}
+		$scope.ordenarColuna = function(coluna)
+		{
+			$scope.colunaOrdenar = coluna;
+			$scope.direcaoOrdenacao = !$scope.direcaoOrdenacao;
+		}
 	});
 	</script>
 </head>
@@ -84,13 +90,13 @@
 	<table ng-show="contatos.length > 0" class="table table-striped">
 		<tr>
 			<td></td>
-			<td>Nome</td>
-			<td>Telefone</td>
+			<td><a href="" ng-click="ordenarColuna('nome')">Nome</a></td>
+			<td><a href="" ng-click="ordenarColuna('telefone')">Telefone</a></td>
 			<td>Operadora</td>
 			<td>Data</td>
 			<td>Cor</td>
 		</tr>
-		<tr ng-repeat="contato in contatos | filter:{nome: criterioBusca}" ng-class="{'selecionado': contato.selecionado}">
+		<tr ng-repeat="contato in contatos | filter:{nome: criterioBusca} | orderBy:colunaOrdenar:direcaoOrdenacao" ng-class="{'selecionado': contato.selecionado}">
 			<td><input type="checkbox" ng-model="contato.selecionado" /></td>
 			<td>{{contato.nome | uppercase}}</td>
 			<td>{{contato.telefone}}</td>
