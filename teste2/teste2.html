@@ -108,11 +108,11 @@
 		<button class="btn btn-danger btn-block" ng-if="isContatoSelecionado(contatos)" ng-click="apagarContatos(contatos)">Apagar</button>
 		<!-- <button class="btn btn-danger btn-block" ng-hide="!isContatoSelecionado(contatos)" ng-click="apagarContatos(contatos)">Apagar</button> -->
 	</form>
-	<div class="alert alert-danger" ng-messages="contatoForm.nome.$error">
-		<div  ng-show="required && $dirty">
+	<div ng-messages="contatoForm.nome.$error" ng-show="contatoForm.nome.$dirty">
+		<div class="alert alert-danger" ng-message="$dirty && required">
 			Por favor, preencha o campo nome!
 		</div>
-		<div  ng-show="minlength">
+		<div class="alert alert-danger" ng-message="minlength">
 			O campo nome deve ter no mínimo 10 caracteres.
 		</div>
 	</div>
