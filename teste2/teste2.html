@@ -90,12 +90,13 @@
 		</tr>
 		<tr ng-repeat="contato in contatos" ng-class="{'selecionado': contato.selecionado}">
 			<td><input type="checkbox" ng-model="contato.selecionado" /></td>
-			<td>{{contato.nome}}</td>
+			<td>{{contato.nome | uppercase}}</td>
 			<td>{{contato.telefone}}</td>
-			<td>{{contato.operadora.nome}}</td>
+			<td>{{contato.operadora.nome | lowercase}}</td>
 			<td><div style="width: 20px; height: 20px;" ng-style="{'background-color': contato.cor}"></div></td>
 		</tr>
 	</table>
+	{{contato}}
 	<form name="contatoForm">
 		<input type="text" name="nome" class="form-control" ng-model="contato.nome" placeholder="Nome" ng-required="true" ng-minlength="10" />
 		<input type="text" name="telefone" class="form-control" ng-model="contato.telefone" placeholder="Telefone" ng-required="true" ng-pattern="/^\d{4,5}-\d{4}$/" />
