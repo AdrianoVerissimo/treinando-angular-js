@@ -11,7 +11,7 @@
 	<style>
 	.jumbotron
 	{
-		width: 400px;
+		width: 600px;
 		text-align: center;
 		margin: 20px auto 0;
 	}
@@ -33,9 +33,9 @@
 
 		$scope.contatos =
 		[
-			{ nome: "Pedro", telefone: "99887766", cor: "blue" },
-			{ nome: "Ana", telefone: "55443322", cor: "yellow" },
-			{ nome: "Maria", telefone: "11223344", cor: "red" }
+			{ nome: "Pedro", telefone: "99887766", data: new Date(), cor: "blue" },
+			{ nome: "Ana", telefone: "55443322", data: new Date(), cor: "yellow" },
+			{ nome: "Maria", telefone: "11223344", data: new Date(), cor: "red" }
 		]
 		$scope.operadoras =
 		[
@@ -86,6 +86,7 @@
 			<td>Nome</td>
 			<td>Telefone</td>
 			<td>Operadora</td>
+			<td>Data</td>
 			<td>Cor</td>
 		</tr>
 		<tr ng-repeat="contato in contatos" ng-class="{'selecionado': contato.selecionado}">
@@ -93,6 +94,7 @@
 			<td>{{contato.nome | uppercase}}</td>
 			<td>{{contato.telefone}}</td>
 			<td>{{contato.operadora.nome | lowercase}}</td>
+			<td>{{contato.data | date:"dd/MM/yyyy HH:mm"}}</td>
 			<td><div style="width: 20px; height: 20px;" ng-style="{'background-color': contato.cor}"></div></td>
 		</tr>
 	</table>
