@@ -36,7 +36,8 @@
 		[
 			{ nome: "Pedro", telefone: "99887766", data: new Date(), cor: "blue" },
 			{ nome: "Ana", telefone: "55443322", data: new Date(), cor: "yellow" },
-			{ nome: "Maria", telefone: "11223344", data: new Date(), cor: "red" }
+			{ nome: "Maria", telefone: "11223344", data: new Date(), cor: "red" },
+			{ nome: "João", telefone: "55667878", data: new Date(), cor: "green" }
 		]
 		$scope.operadoras =
 		[
@@ -97,7 +98,7 @@
 			<td>Data</td>
 			<td>Cor</td>
 		</tr>
-		<tr ng-repeat="contato in contatos | filter:{nome: criterioBusca} | orderBy:colunaOrdenar:direcaoOrdenacao" ng-class="{'selecionado': contato.selecionado}">
+		<tr ng-repeat="contato in contatos | limitTo:3 | filter:{nome: criterioBusca} | orderBy:colunaOrdenar:direcaoOrdenacao" ng-class="{'selecionado': contato.selecionado}">
 			<td><input type="checkbox" ng-model="contato.selecionado" /></td>
 			<td>{{contato.nome | uppercase}}</td>
 			<td>{{contato.telefone}}</td>
